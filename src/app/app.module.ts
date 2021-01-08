@@ -5,12 +5,18 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    //Components.
+    //Directives
+    //Pipes
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    
   ],
-  providers: [],
+  providers: [
+    //Service
+  ],
   bootstrap: [AppComponent]
-})
+}) // Decorator Function - Atribute in C#
 export class AppModule { }
