@@ -1,0 +1,15 @@
+<h3 class="alert alert-success">Event Binding Exmaples</h3>
+
+<!-- <div class="alert alert-info" (click)="Message = 'Hellow World'" >Click Event examples</div> -->
+<!-- <div class="alert alert-info" (click)="ClickExample()" (contextmenu)="message='Right click occurred'" >Click Event examples</div> -->
+<div class="alert alert-info" (click)="ClickExample()" (contextmenu)="RightClickExample($event)">Click Event examples
+</div>
+<div class="alert alert-info">
+    <div class="col-md-3">
+        <div class="form-group">
+            <!-- <input type="text" class="form-control" (keyup)="TextChanged($event)" > -->
+            <input type="text" class="form-control" (input)="TextChanged($event)" >
+        </div>
+    </div>
+</div>
+<div class="alert alert-danger">{{message}}</div>

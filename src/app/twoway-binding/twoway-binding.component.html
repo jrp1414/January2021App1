@@ -1,0 +1,48 @@
+<h3 class="alert alert-info">One way binding short comings</h3>
+
+<div class="row">
+    <div class="col-md-3">
+        {{OneWayMessage}}
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <input type="text" class="form-control" (input)="OneWayChange($event)" placeholder="One way test">
+        </div>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" (click)="OneWayTest()">One way test</button>
+    </div>
+</div>
+
+<!-- <h3 class="alert alert-info">Two way binding exmaples</h3>
+
+<div class="row">
+    <div class="col-md-3">
+        {{TwoWayMessage}}
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="TwoWayMessage" placeholder="Two way test">
+        </div>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" (click)="TwoWayTest()">Two way test</button>
+    </div>
+</div> -->
+
+
+<h3 class="alert alert-info">Two way binding exmaples</h3>
+
+<div class="row">
+    <div class="col-md-3">
+        {{TwoWayMessage}}
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <input type="text" class="form-control" [ngModel]="TwoWayMessage" (ngModelChange)="TwoWayChange($event)" placeholder="Two way test">
+        </div>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" (click)="TwoWayTest()">Two way test</button>
+    </div>
+</div>
