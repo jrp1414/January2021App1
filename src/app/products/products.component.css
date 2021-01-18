@@ -1,0 +1,13 @@
+.red{
+    background-color: crimson;
+    color: cyan;
+}
+
+.green{
+    background-color: yellowgreen;
+    color:blue;
+}
+
+.bold{
+    font-weight: bold;
+}
