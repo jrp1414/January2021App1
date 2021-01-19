@@ -1,0 +1,12 @@
+<div class="card border-primary">
+  <img class="card-img-top" [src]="product.imageUrl" style="max-width: 60px; max-height: 60px;" alt="">
+  <div class="card-body">
+    <h4 class="card-title">{{product.productName | uppercase}}</h4>
+    <p class="card-text">{{product.description.descText | uppercase | lowercase}}</p>
+    <p class="card-text">Price : {{product.price | currency : 'GBP':'symbol'  }}</p>
+    <p class="card-text">Release : {{product.releaseDate | date : 'MM-dd-yyyy' }}</p>
+    <button type="button" class="btn btn-primary" (click)="SendToParent()">Send to Parent</button>
+
+    <!-- {{product | json}} -->
+  </div>
+</div>

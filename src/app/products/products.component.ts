@@ -35,4 +35,8 @@ export class ProductsComponent {
     return "red";
   }
 
+  ReceivedData(data){
+    console.log(new Date().toTimeString()+" : "+data);
+  }
+
 }
