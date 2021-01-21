@@ -1,4 +1,7 @@
 <h3>Products List</h3>
+<div basic-highlight>Basic Highlight Example</div>
+<!-- <div better-highlight defaultColor="chartreuse">Better Highlight Example</div> -->
+<div [better-highlight]="'chartreuse'" highlight="yellow">Better Highlight Example</div>
 <div class="row">
     <div class="col-md-2">
         Filter:
@@ -14,6 +17,11 @@
             <strong>{{filterText}}</strong>
         </div>
     </div> -->
+    <div *unless="filterText.length == 0" class="col-md-2">
+        <div class="alert alert-primary" role="alert">
+            <strong>{{filterText}}</strong>
+        </div>
+    </div>
 </div>
 <ng-content></ng-content>
 <div class="row">

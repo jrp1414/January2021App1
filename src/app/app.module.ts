@@ -11,6 +11,9 @@ import { ProductsComponent } from './products/products.component';
 import { ProductThumbnailComponent } from './product-thumbnail/product-thumbnail.component';
 import { ShortenPipe } from './shared/pipes/shorten.pipe';
 import { FilterPipe } from './shared/pipes/filter.pipe';
+import { BasicHighlightDirective } from './shared/directives/basic-highlight-directive';
+import { BetterHighlightDirective } from './shared/directives/better-highlight.directive';
+import { UnlessDirective } from './shared/directives/unless.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     ProductsComponent,
     ProductThumbnailComponent,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    BasicHighlightDirective,
+    BetterHighlightDirective,
+    UnlessDirective
     //Components.
     //Directives
     //Pipes
