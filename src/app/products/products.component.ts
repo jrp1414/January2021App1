@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, productList } from '../services/product.data';
+import { Description, Product, productList } from '../services/product.data';
 
 @Component({
   selector: 'app-products',
@@ -37,6 +37,11 @@ export class ProductsComponent {
 
   ReceivedData(data){
     console.log(new Date().toTimeString()+" : "+data);
+  }
+
+  TestPipe(){
+    this.products.push(
+        new Product(25,"Test Product","TPC-001",new Date('12/25/2020'),55.52,4,"",true,new Description("Test Product","test@gmail.com")));
   }
 
 }

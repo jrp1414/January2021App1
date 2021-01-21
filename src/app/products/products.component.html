@@ -8,16 +8,18 @@
             <input type="text" [(ngModel)]="filterText" class="form-control">
         </div>
     </div>
-    <div class="col-md-2">
+    <button type="button" class="btn btn-primary" (click)="TestPipe()">Test Pipe</button>
+    <!-- <div class="col-md-2">
         <div [hidden]="filterText.length==0" class="alert alert-primary" role="alert">
             <strong>{{filterText}}</strong>
         </div>
-    </div>
+    </div> -->
 </div>
 <ng-content></ng-content>
 <div class="row">
     <!-- <div class="col-md-4" *ngFor="let prod of products">
         <product-thumbnail [product]="prod"></product-thumbnail>
     </div> -->
-    <product-thumbnail class="col-md-4" style="margin-bottom: 10px;" [pd]="prod" (sd)="ReceivedData($event)" *ngFor="let prod of products"></product-thumbnail>
+    <product-thumbnail class="col-md-3" style="margin-bottom: 10px;" [pd]="prod" (sd)="ReceivedData($event)"
+        *ngFor="let prod of products | filter : filterText : 'productName' : 'productCode'"></product-thumbnail>
 </div>
