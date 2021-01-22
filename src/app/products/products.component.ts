@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Description, Product, productList } from '../services/product.data';
+import { LoggerService } from '../services/logger.service';
+import { Description, Product } from '../services/product.data';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ["./products.component.css"]
+  styleUrls: ["./products.component.css"],
+  providers: [
+    // LoggerService,
+    // ProductService
+  ]
 })
 export class ProductsComponent {
-  products: Product[] = productList;
+  products: Product[] = [];
   filterText: string = "";
-  constructor() {
+  constructor(private logger: LoggerService,private ps:ProductService) {
+
+    this.products = this.ps.getProducts();
     // for (let key in this.products) {
     //   console.log(key);
     //   console.log(this.products[key]);
@@ -21,27 +29,31 @@ export class ProductsComponent {
   }
 
   getStyles(prod) {
-    if(prod.starRating>3){
-      return {backgroundColor:"chartreuse",color:"blue"};
+    if (prod.starRating > 3) {
+      return { backgroundColor: "chartreuse", color: "blue" };
     }
-    return {backgroundColor:"crimson",color:"white"};
+    return { backgroundColor: "crimson", color: "white" };
   }
 
-  getClass(prod){
-    if (prod.starRating>3) {
-        // return "green bold";
-        return ["green","bold"];
+  getClass(prod) {
+    if (prod.starRating > 3) {
+      // return "green bold";
+      return ["green", "bold"];
     }
     return "red";
   }
 
-  ReceivedData(data){
-    console.log(new Date().toTimeString()+" : "+data);
+  ReceivedData(data) {
+
+    // console.log(new Date().toTimeString()+" : "+data);
+    this.logger.log("Received in Parent : "+data);
+
+    this.ps.notify.emit("Received in Parent");
   }
 
-  TestPipe(){
+  TestPipe() {
     this.products.push(
-        new Product(25,"Test Product","TPC-001",new Date('12/25/2020'),55.52,4,"",true,new Description("Test Product","test@gmail.com")));
+      new Product(25, "Test Product", "TPC-001", new Date('12/25/2020'), 55.52, 4, "", true, new Description("Test Product", "test@gmail.com")));
   }
 
 }

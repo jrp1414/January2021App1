@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoggerService } from './services/logger.service';
+import { ProductService } from './services/product.service';
 
 @Component({
   // selector: 'app-root',
@@ -20,8 +22,12 @@ import { Component } from '@angular/core';
   //  h2{background-color:maroon}
   //  `
   // ]
-  styleUrls:[
+  styleUrls: [
     "./app.component.css"
+  ],
+  providers: [
+    // LoggerService,
+    // ProductService
   ]
 })
 export class AppComponent {

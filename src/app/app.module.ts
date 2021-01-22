@@ -14,6 +14,9 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
 import { BasicHighlightDirective } from './shared/directives/basic-highlight-directive';
 import { BetterHighlightDirective } from './shared/directives/better-highlight.directive';
 import { UnlessDirective } from './shared/directives/unless.directive';
+import { TempProductsComponent } from './temp-products/temp-products.component';
+import { LoggerService } from './services/logger.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { UnlessDirective } from './shared/directives/unless.directive';
     FilterPipe,
     BasicHighlightDirective,
     BetterHighlightDirective,
-    UnlessDirective
+    UnlessDirective,
+    TempProductsComponent
     //Components.
     //Directives
     //Pipes
@@ -38,7 +42,9 @@ import { UnlessDirective } from './shared/directives/unless.directive';
     FormsModule
   ],
   providers: [
-    //Service
+    //Service,
+    LoggerService,
+    // ProductService
   ],
   bootstrap: [AppComponent]
 }) // Decorator Function - Atribute in C#
