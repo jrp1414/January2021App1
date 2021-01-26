@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
+import { Route, RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import { StringInterpolationComponent } from './string-interpolation/string-interpolation.component';
@@ -17,6 +18,18 @@ import { UnlessDirective } from './shared/directives/unless.directive';
 import { TempProductsComponent } from './temp-products/temp-products.component';
 import { LoggerService } from './services/logger.service';
 import { ProductService } from './services/product.service';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+
+const routes: Routes = [
+  { path: "home", component: HomeComponent },
+  { path: "products", component: ProductsComponent },
+  { path: "productdetails/:id", component: ProductDetailsComponent },
+  { path: "", component: HomeComponent },
+  // { path: "**", redirectTo: "home" }
+];
 
 @NgModule({
   declarations: [
@@ -32,14 +45,19 @@ import { ProductService } from './services/product.service';
     BasicHighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
-    TempProductsComponent
+    TempProductsComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProductDetailsComponent
     //Components.
     //Directives
     //Pipes
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     //Service,

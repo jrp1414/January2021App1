@@ -14,6 +14,10 @@ export class ProductService {
     return productList;
   }
 
+  getProduct(id:number): Product {
+    return productList.find((p)=>p.productId==id);
+  }
+
   notify: EventEmitter<string> = new EventEmitter();
 }
 
