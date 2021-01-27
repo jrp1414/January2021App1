@@ -28,6 +28,21 @@
     <!-- <div class="col-md-4" *ngFor="let prod of products">
         <product-thumbnail [product]="prod"></product-thumbnail>
     </div> -->
-    <product-thumbnail class="col-md-3" [routerLink]="['/productdetails',prod.productId]" style="margin-bottom: 10px;" [pd]="prod" (sd)="ReceivedData($event)"
-        *ngFor="let prod of products | filter : filterText : 'productName' : 'productCode'"></product-thumbnail>
+    <!-- <product-thumbnail class="col-md-3" [routerLink]="['/productdetails',prod.productId,{code:prod.productCode,name:prod.productName}]" style="margin-bottom: 10px;" [pd]="prod" (sd)="ReceivedData($event)"
+        *ngFor="let prod of products | filter : filterText : 'productName' : 'productCode'"></product-thumbnail> -->
+
+    <!-- <product-thumbnail class="col-md-3"
+        [routerLink]="['/productdetails',prod.productId]"
+        [queryParams]="{code:prod.productCode,name:prod.productName}"
+        style="margin-bottom: 10px;" [pd]="prod" (sd)="ReceivedData($event)"
+        *ngFor="let prod of products | filter : filterText : 'productName' : 'productCode'"></product-thumbnail> -->
+    <!-- <product-thumbnail class="col-md-3" [routerLink]="['/productdetails',prod.productId]"
+        [fragment]="prod.productCode" style="margin-bottom: 10px;" [pd]="prod"
+        (sd)="ReceivedData($event)" *ngFor="let prod of products | filter : filterText : 'productName' : 'productCode'">
+    </product-thumbnail> -->
+
+    <product-thumbnail class="col-md-3" [routerLink]="['/productdetails',prod.productId]"
+        style="margin-bottom: 10px;" [pd]="prod"
+        (sd)="ReceivedData($event)" *ngFor="let prod of products | filter : filterText : 'productName' : 'productCode'">
+    </product-thumbnail>
 </div>

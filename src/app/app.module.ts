@@ -22,11 +22,12 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductGuard } from './services/product.guard';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
-  { path: "productdetails/:id", component: ProductDetailsComponent },
+  { path: "productdetails/:id", component: ProductDetailsComponent,canActivate:[ProductGuard] },
   { path: "", component: HomeComponent },
   // { path: "**", redirectTo: "home" }
 ];

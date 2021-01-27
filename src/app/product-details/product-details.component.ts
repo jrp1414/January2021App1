@@ -17,9 +17,25 @@ export class ProductDetailsComponent implements OnInit {
     // console.log(this.route.snapshot.params);
     // this.product = this.ps.getProduct(this.route.snapshot.params.id);
 
-    this.route.params.subscribe((parms)=>{
-      this.product = this.ps.getProduct(parms["id"]);
+    // this.route.params.subscribe((parms)=>{
+    //   console.log(parms);
+    //   this.product = this.ps.getProduct(parms["id"]);
+    // });
+
+    this.route.paramMap.subscribe((parms) => {
+      // console.log(parms);
+      this.product = this.ps.getProduct(+parms.get("id"));
     });
+
+    // console.log(this.route.snapshot.queryParams);
+    // this.route.queryParams.subscribe((qParms)=>{
+    //   console.log(qParms);
+    // });
+
+    // console.log(this.route.snapshot.fragment);
+    // this.route.fragment.subscribe((f) => {
+    //   console.log(f);
+    // });
   }
 
 }
