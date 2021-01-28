@@ -23,11 +23,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductGuard } from './services/product.guard';
+import { StudentsModule } from './students/students.module';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
-  { path: "productdetails/:id", component: ProductDetailsComponent,canActivate:[ProductGuard] },
+  { path: "productdetails/:id", component: ProductDetailsComponent, canActivate: [ProductGuard] },
   { path: "", component: HomeComponent },
   // { path: "**", redirectTo: "home" }
 ];
@@ -58,6 +59,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    StudentsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

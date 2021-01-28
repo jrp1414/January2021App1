@@ -1,0 +1,21 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">{{student.FirstName+" "+student.LastName}}</h1>
+        <p class="lead">Mobile No: {{student.MobileNo}}</p>
+        <p class="lead">Mobile No: {{student.EmailId}}</p>
+        <hr class="my-2">
+        <p class="lead">
+            Address:<br>
+            {{student.Address.AddLine1}}
+            <br>
+            {{student.Address.AddLine2}}
+            <br>
+            {{student.Address.AddLine3}}
+            <br>
+            {{student.Address.City}}
+            <br>
+            {{student.Address.State}}
+        </p>
+        <button type="button" [routerLink]="['edit']" class="btn btn-secondary">Edit</button>
+    </div>
+</div>
