@@ -24,11 +24,14 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductGuard } from './services/product.guard';
 import { StudentsModule } from './students/students.module';
+import { SignupComponent } from './signup/signup.component';
+import { MaxminDirective } from './shared/directives/maxmin.directive';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
   { path: "productdetails/:id", component: ProductDetailsComponent, canActivate: [ProductGuard] },
+  { path: "signup", component: SignupComponent },
   { path: "", component: HomeComponent },
   // { path: "**", redirectTo: "home" }
 ];
@@ -51,7 +54,9 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    SignupComponent,
+    MaxminDirective
     //Components.
     //Directives
     //Pipes

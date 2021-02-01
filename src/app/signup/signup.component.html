@@ -1,0 +1,150 @@
+<div class="container">
+    <!-- <form #signupform="ngForm" (ngSubmit)="onSubmit()">  -->
+    <form #signupform="ngForm" (ngSubmit)="onSubmit(signupform.value)">
+        <!-- <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">Touched : {{signupform.touched}}</li>
+                    <li class="list-group-item">Dirty : {{signupform.dirty}}</li>
+                    <li class="list-group-item">Valid : {{signupform.valid}}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">Untouched : {{signupform.untouched}}</li>
+                    <li class="list-group-item">Pristine : {{signupform.pristine}}</li>
+                </ul>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="FirstName">First Name</label>
+                    <input type="text" class="form-control" required name="FirstName" minlength="3" #FirstName="ngModel"
+                        ngModel id="FirstName" aria-describedby="helpId" placeholder="First Name">
+                    <span style="margin-top: 5px;" *ngIf="FirstName.errors?.required && FirstName.touched"
+                        class="alert alert-danger">Enter First Name</span>
+                    <span style="margin-top: 5px;" *ngIf="FirstName.errors?.minlength" class="alert alert-danger">Min 3
+                        characters required</span>
+                    <!-- <span>{{FirstName.errors | json}}</span> -->
+                </div>
+            </div>
+            <!-- <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">FirstName Touched : {{FirstName.touched}}</li>
+                            <li class="list-group-item">FirstName Dirty : {{FirstName.dirty}}</li>
+                            <li class="list-group-item">FirstName Valid : {{FirstName.valid}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">FirstName Untouched : {{FirstName.untouched}}</li>
+                            <li class="list-group-item">FirstName Pristine : {{FirstName.pristine}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="LastName">Last Name</label>
+                    <input type="text" class="form-control" required name="LastName" #LastName="ngModel" ngModel
+                        id="LastName" aria-describedby="helpId" placeholder="Last Name">
+                    <small id="helpId" class="form-text text-muted">Last Name</small>
+                    <!-- <span>{{LastName.errors | json}}</span> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="EmailId">Email Id</label>
+                    <input type="email" class="form-control" email required ngModel name="EmailId" #EmailId="ngModel"
+                        id="EmailId" aria-describedby="emailHelpId" placeholder="Email Id">
+                    <small id="emailHelpId" class="form-text text-muted">Email Id</small>
+                    <!-- <span>{{EmailId.errors | json}}</span> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="MobileNo">Mobile No</label>
+                    <input type="text" class="form-control" pattern="[0-9 ]{10}" ngModel name="MobileNo"
+                        #MobileNo="ngModel" id="MobileNo" aria-describedby="helpId" placeholder="MobileNo">
+                    <small id="helpId" class="form-text text-muted">Mobile No</small>
+                    <!-- <span>{{MobileNo.errors | json}}</span> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" ngModel name="Password" id="Password"
+                        placeholder="Password">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ConfirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" ngModel name="ConfirmPassword" id="ConfirmPassword"
+                        placeholder="Confirm Password">
+                </div>
+            </div>
+
+        </div>
+        <div class="row" ngModelGroup="Details">
+            <div class="col-md-6">
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" ngModel type="checkbox" name="TermsAndConditions"> Terms and
+                        Conditions
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">Gender : </label>
+                    <label class="form-check-label">
+                        <input class="form-check-input" ngModel type="radio" name="Gender" value="male"> Male
+                        <input class="form-check-input" ngModel type="radio" name="Gender" value="female"> Female
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <textarea class="form-control" ngModel name="Address" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="City">City</label>
+                    <select class="form-control" ngModel name="City" id="City">
+                        <option>Pune</option>
+                        <option>Chennai</option>
+                        <option>Bengaluru</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Skills">Skills</label>
+                    <select multiple class="form-control" ngModel name="Skills">
+                        <option>C#</option>
+                        <option>Angular</option>
+                        <option>Javascript</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Age">Age</label>
+                    <input type="number" class="form-control" [maxmin]="{max:25,min:10}" name="Age" id="Age"
+                        #Age="ngModel" ngModel aria-describedby="helpId" placeholder="">
+                    <small id="helpId" *ngIf="Age.errors?.max" class="form-text text-muted">Max age 25</small>
+                    <small id="helpId" *ngIf="Age.errors?.min" class="form-text text-muted">Min age 10</small>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button [disabled]="signupform.invalid" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
