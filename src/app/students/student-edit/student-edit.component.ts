@@ -20,37 +20,23 @@ export class StudentEditComponent implements OnInit {
   hobbies: FormArray = this.fb.array([]);
   ngOnInit(): void {
     this.studentEditForm = this.fb.group({
-      FirstName: this.fb.control(""),
-      LastName: this.fb.control(""),
-      MobileNo: this.fb.control(""),
-      EmailId: this.fb.control(""),
-      NotificationType: this.fb.control(""),
+      FirstName: "",
+      LastName: "",
+      MobileNo: "",
+      EmailId: "",
+      NotificationType: "email",
       Address: this.fb.group({
-        AddLine1: this.fb.control(""),
-        AddLine2: this.fb.control(""),
-        AddLine3: this.fb.control(""),
-        City: this.fb.control(""),
-        State: this.fb.control(""),
+        AddLine1: "",
+        AddLine2: "",
+        AddLine3: "",
+        City: "",
+        State: "",
       }),
       Hobbies: this.hobbies
     });
     this.route.params.subscribe((parms) => {
       this.student = this.ss.getStudent(parms.id);
-      this.studentEditForm.patchValue(this.student);
-      // this.studentEditForm = this.fb.group({
-      //   FirstName: this.fb.control(this.student.FirstName),
-      //   LastName: this.fb.control(this.student.LastName),
-      //   MobileNo: this.fb.control(this.student.MobileNo),
-      //   EmailId: this.fb.control(this.student.EmailId),
-      //   NotificationType: this.fb.control(this.student.NotificationType),
-      //   Address: this.fb.group({
-      //     AddLine1: this.fb.control(this.student.Address.AddLine1),
-      //     AddLine2: this.fb.control(this.student.Address.AddLine2),
-      //     AddLine3: this.fb.control(this.student.Address.AddLine3),
-      //     City: this.fb.control(this.student.Address.City),
-      //     State: this.fb.control(this.student.Address.State),
-      //   })
-      // });
+      this.studentEditForm.patchValue(this.student);      
     });
 
 
