@@ -7,6 +7,10 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { StudentEditComponent } from './student-edit/student-edit.component';
 import { StudentAddComponent } from './student-add/student-add.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../shared/material/material.module';
+import { PrimengModule } from '../shared/primeng/primeng.module';
+import { MessageService } from 'primeng/api';
 
 
 const routes: Routes = [
@@ -29,8 +33,12 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    SharedModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+    MaterialModule,
+    PrimengModule
+  ],
+  providers:[]
 })
 export class StudentsModule { }

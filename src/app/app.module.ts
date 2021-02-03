@@ -26,6 +26,11 @@ import { ProductGuard } from './services/product.guard';
 import { StudentsModule } from './students/students.module';
 import { SignupComponent } from './signup/signup.component';
 import { MaxminDirective } from './shared/directives/maxmin.directive';
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material/material.module';
+import { PrimengModule } from './shared/primeng/primeng.module';
+import { MessageService } from 'primeng/api';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -45,18 +50,12 @@ const routes: Routes = [
     TwowayBindingComponent,
     ProductsComponent,
     ProductThumbnailComponent,
-    ShortenPipe,
-    FilterPipe,
-    BasicHighlightDirective,
-    BetterHighlightDirective,
-    UnlessDirective,
     TempProductsComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
     ProductDetailsComponent,
     SignupComponent,
-    MaxminDirective
     //Components.
     //Directives
     //Pipes
@@ -64,12 +63,17 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    SharedModule,
     StudentsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MaterialModule,
+    PrimengModule
   ],
   providers: [
     //Service,
     LoggerService,
+    MessageService
     // ProductService
   ],
   bootstrap: [AppComponent]

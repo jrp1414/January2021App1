@@ -9,7 +9,6 @@
                     <small id="helpId" class="form-text text-muted">First Name</small>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="LastName">Last Name</label>
@@ -46,6 +45,16 @@
                     <input type="text" class="form-control" id="MobileNo" formControlName="MobileNo"
                         aria-describedby="helpId" placeholder="Mobile No">
                     <small id="helpId" class="form-text text-muted">Mobile No</small>
+                </div>
+            </div>
+        </div>
+        <div class="row" formArrayName="Hobbies">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" (click)="AddHobby()">Add Hobby</button>
+            </div>
+            <div class="col-md-2" *ngFor="let control of hobbies.controls;let i=index">
+                <div class="form-group">
+                    <input type="text" class="form-control" [formControlName]="i">
                 </div>
             </div>
         </div>

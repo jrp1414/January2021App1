@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { LoggerService } from './services/logger.service';
 import { ProductService } from './services/product.service';
 
@@ -30,6 +31,12 @@ import { ProductService } from './services/product.service';
     // ProductService
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private messageService:MessageService,private primengConfig: PrimeNGConfig) {
+    
+  }
+  ngOnInit(): void {
+    this.primengConfig.ripple = true;
+  }
 
 }

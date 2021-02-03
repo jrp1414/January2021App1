@@ -7,6 +7,9 @@
                         <a [routerLink]="['add']">Add
                         </a>
                     </li>
+                    <li class="list-group-item">
+                        <button type="button" class="btn btn-primary" (click)="ShowToast()">Show Toast</button>
+                    </li>
                     <li class="list-group-item" *ngFor="let student of students">
                         <a [routerLink]="[student.StudentId]">{{student.FirstName +" "+student.LastName}}
                         </a>
@@ -14,6 +17,7 @@
                 </ul>
             </div>
             <div class="col-md-10">
+                <!-- <mat-spinner></mat-spinner> -->
                 <router-outlet></router-outlet>
             </div>
         </div>
