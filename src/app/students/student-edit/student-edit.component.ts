@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { range } from 'src/app/shared/validators/range.validator';
 import { Student } from '../services/student.data';
 import { StudentService } from '../services/student.service';
 
@@ -9,6 +10,7 @@ import { StudentService } from '../services/student.service';
   selector: 'app-student-edit',
   templateUrl: './student-edit.component.html',
   styles: [
+
   ]
 })
 export class StudentEditComponent implements OnInit {
@@ -29,22 +31,33 @@ export class StudentEditComponent implements OnInit {
   ]);
   ngOnInit(): void {
     this.studentEditForm = this.fb.group({
-      FirstName: "",
-      LastName: "",
-      MobileNo: "",
-      EmailId: "",
+      FirstName: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      LastName: ["", Validators.required],
+      MobileNo: ["", Validators.pattern("[0-9 ]{10}")],
+      EmailId: ["", [Validators.required, Validators.email]],
       NotificationType: "email",
-      Addresses: this.addresses,
-      Hobbies: this.hobbies
+      //Age: [0,range],
+      Age: [0, range(10, 25)],
+      Address: this.fb.group({
+        AddLine1: ["", Validators.required],
+        AddLine2: "",
+        AddLine3: "",
+        City: "",
+        State: "",
+      })
     });
     this.route.params.subscribe((parms) => {
       this.student = this.ss.getStudent(parms.id);
-      this.studentEditForm.patchValue(this.student);
+      // this.studentEditForm.patchValue(this.student);
+    });
+
+    this.studentEditForm.get("NotificationType").valueChanges.subscribe((value) => {
+      this.SetNotification(value);
     });
   }
 
   onSubmit() {
-    console.log(this.studentEditForm.value);
+    console.log(this.studentEditForm);
   }
 
   AddHobby() {
@@ -69,4 +82,25 @@ export class StudentEditComponent implements OnInit {
     }
   }
 
+  SetNotification(notType: string) {
+    let mobileControl = this.studentEditForm.get("MobileNo");
+    if (notType == 'mobile') {
+      mobileControl.setValidators(Validators.required);
+    } else {
+      mobileControl.clearValidators();
+    }
+    mobileControl.setValidators(Validators.pattern("[0-9 ]{10}"));
+    mobileControl.updateValueAndValidity();
+  }
+
 }
+
+// function range(control: AbstractControl): ValidationErrors | null {
+//   if (control.value < 10) {
+//     return { min: true };
+//   }
+//   if (control.value > 25) {
+//     return { max: true };
+//   }
+//   return null;
+// }
