@@ -16,8 +16,17 @@ export class StudentEditComponent implements OnInit {
   student: Student;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
-    private ss: StudentService,private ms:MessageService) { }
+    private ss: StudentService, private ms: MessageService) { }
   hobbies: FormArray = this.fb.array([]);
+  addresses: FormArray = this.fb.array([
+    this.fb.group({
+      AddLine1: "",
+      AddLine2: "",
+      AddLine3: "",
+      City: "",
+      State: "",
+    })
+  ]);
   ngOnInit(): void {
     this.studentEditForm = this.fb.group({
       FirstName: "",
@@ -25,22 +34,13 @@ export class StudentEditComponent implements OnInit {
       MobileNo: "",
       EmailId: "",
       NotificationType: "email",
-      Address: this.fb.group({
-        AddLine1: "",
-        AddLine2: "",
-        AddLine3: "",
-        City: "",
-        State: "",
-      }),
+      Addresses: this.addresses,
       Hobbies: this.hobbies
     });
     this.route.params.subscribe((parms) => {
       this.student = this.ss.getStudent(parms.id);
-      this.studentEditForm.patchValue(this.student);      
+      this.studentEditForm.patchValue(this.student);
     });
-
-
-
   }
 
   onSubmit() {
@@ -51,9 +51,22 @@ export class StudentEditComponent implements OnInit {
     if (this.hobbies.controls.length < 5) {
       this.hobbies.push(this.fb.control(""));
     } else {
-      this.ms.add({severity:'info', summary: 'Info', detail: 'Maximum 5 hobbies can be added'});
+      this.ms.add({ severity: 'info', summary: 'Info', detail: 'Maximum 5 hobbies can be added' });
     }
+  }
 
+  AddAddress() {
+    if (this.addresses.controls.length < 3) {
+      this.addresses.push(this.fb.group({
+        AddLine1: "",
+        AddLine2: "",
+        AddLine3: "",
+        City: "",
+        State: "",
+      }));
+    } else {
+      this.ms.add({ severity: 'info', summary: 'Info', detail: 'Maximum 3 Addresses can be added' });
+    }
   }
 
 }

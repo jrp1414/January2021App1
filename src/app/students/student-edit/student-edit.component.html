@@ -58,51 +58,56 @@
                 </div>
             </div>
         </div>
-        <div class="row" formGroupName="Address">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="AddLine1">Add Line 1</label>
-                    <input type="text" class="form-control" formControlName="AddLine1" id="AddLine1"
-                        aria-describedby="helpId" placeholder="Add Line 1">
-                    <small id="helpId" class="form-text text-muted">Help text</small>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="AddLine2">Add Line 2</label>
-                    <input type="text" class="form-control" formControlName="AddLine2" id="AddLine2"
-                        aria-describedby="helpId" placeholder="Add Line 2">
-                    <small id="helpId" class="form-text text-muted">Help text</small>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="AddLine3">Add Line 3</label>
-                    <input type="text" class="form-control" formControlName="AddLine3" id="AddLine3"
-                        aria-describedby="helpId" placeholder="Add Line 3">
-                    <small id="helpId" class="form-text text-muted">Help text</small>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="City">City</label>
-                    <select class="form-control" formControlName="City" id="City">
-                        <option>Bhubaneswar</option>
-                        <option>Pune</option>
-                        <option>Mumbai</option>
-                        <option>Chennai</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="State">State</label>
-                    <select class="form-control" formControlName="State" id="State">
-                        <option>Odisha</option>
-                        <option>Maharashtra</option>
-                        <option>Tamil Nadu</option>
-                        <option>Karnataka</option>
-                    </select>
+        <div formArrayName="Addresses">
+            <button type="button" class="btn btn-primary" (click)="AddAddress()">Add Address</button>
+            <div class="card border-primary" *ngFor="let addr of addresses.controls;let i=index" [formGroupName]="i">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="AddLine1">Add Line 1</label>
+                            <input type="text" class="form-control" formControlName="AddLine1" id="AddLine1"
+                                aria-describedby="helpId" placeholder="Add Line 1">
+                            <small id="helpId" class="form-text text-muted">Help text</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="AddLine2">Add Line 2</label>
+                            <input type="text" class="form-control" formControlName="AddLine2" id="AddLine2"
+                                aria-describedby="helpId" placeholder="Add Line 2">
+                            <small id="helpId" class="form-text text-muted">Help text</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="AddLine3">Add Line 3</label>
+                            <input type="text" class="form-control" formControlName="AddLine3" id="AddLine3"
+                                aria-describedby="helpId" placeholder="Add Line 3">
+                            <small id="helpId" class="form-text text-muted">Help text</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="City">City</label>
+                            <select class="form-control" formControlName="City" id="City">
+                                <option>Bhubaneswar</option>
+                                <option>Pune</option>
+                                <option>Mumbai</option>
+                                <option>Chennai</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="State">State</label>
+                            <select class="form-control" formControlName="State" id="State">
+                                <option>Odisha</option>
+                                <option>Maharashtra</option>
+                                <option>Tamil Nadu</option>
+                                <option>Karnataka</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
