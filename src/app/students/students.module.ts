@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { StudentsComponent } from './students/students.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
@@ -11,7 +12,6 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material/material.module';
 import { PrimengModule } from '../shared/primeng/primeng.module';
 import { MessageService } from 'primeng/api';
-
 
 const routes: Routes = [
   {
@@ -35,6 +35,7 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forChild(routes),
     MaterialModule,
     PrimengModule

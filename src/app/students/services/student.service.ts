@@ -1,16 +1,33 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Student } from './student.data';
 
 @Injectable({ providedIn: 'root' })
 export class StudentService {
-    constructor() { }
+    constructor(private http: HttpClient) { }
+    private baseUrl: string = "http://localhost:44319/";
+    public notify: EventEmitter<boolean> = new EventEmitter();
 
-    getStudents(): Student[] {
-        return students;
+
+    getStudents(): Observable<any> {
+        return this.http.get(this.baseUrl + "GetStudents");
     }
 
-    getStudent(id: number): Student {
-        return students.find((std) => std.StudentId == id);
+    getStudent(id: number): Observable<any> {
+        return this.http.get(this.baseUrl + "GetStudent/" + id);
+    }
+
+    addStudent(student: Student): Observable<any> {
+        return this.http.post(this.baseUrl + "AddStudent", student);
+    }
+
+    updateStudent(student: Student): Observable<any> {
+        return this.http.put(this.baseUrl + "UpdateStudent", student);
+    }
+
+    deleteStudent(id: number) {
+        return this.http.delete(this.baseUrl + "DeleteStudent/" + id);
     }
 
 }

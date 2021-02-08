@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { range } from 'src/app/shared/validators/range.validator';
 import { Student } from '../services/student.data';
@@ -18,7 +18,7 @@ export class StudentEditComponent implements OnInit {
   student: Student;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
-    private ss: StudentService, private ms: MessageService) { }
+    private ss: StudentService, private ms: MessageService, private router: Router) { }
   hobbies: FormArray = this.fb.array([]);
   addresses: FormArray = this.fb.array([
     this.fb.group({
@@ -47,8 +47,11 @@ export class StudentEditComponent implements OnInit {
       })
     });
     this.route.params.subscribe((parms) => {
-      this.student = this.ss.getStudent(parms.id);
-      // this.studentEditForm.patchValue(this.student);
+      this.ss.getStudent(parms.id).subscribe((resp) => {
+        this.student = resp;
+        this.studentEditForm.patchValue(this.student);
+      });
+
     });
 
     this.studentEditForm.get("NotificationType").valueChanges.subscribe((value) => {
@@ -57,7 +60,13 @@ export class StudentEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.studentEditForm);
+    this.ss.updateStudent({
+      ...this.studentEditForm.value,
+      StudentId: this.student.StudentId
+    }).subscribe(() => {
+      this.ss.notify.emit(true);
+      this.router.navigate(["/students"]);
+    });
   }
 
   AddHobby() {

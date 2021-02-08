@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Student } from '../services/student.data';
@@ -9,12 +10,14 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
-  student:Student;
-  constructor(public ss:StudentService, private route:ActivatedRoute) { }
+  student: Student;
+  constructor(public ss: StudentService, private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((parms)=>{
-      this.student = this.ss.getStudent(parms.id);
+    this.route.params.subscribe((parms) => {
+      this.ss.getStudent(parms.id).subscribe((resp) => {
+        this.student = resp;
+      });
     });
   }
 

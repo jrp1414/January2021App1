@@ -1,1 +1,142 @@
-<p>student-add works!</p>
+<div class="container">
+    <form [formGroup]="studentAddForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="FirstName">First Name</label>
+                    <input type="text" class="form-control" formControlName="FirstName" id="FirstName"
+                        aria-describedby="helpId" placeholder="First Name">
+                    <small
+                        *ngIf="studentAddForm.controls.FirstName.errors?.required && studentAddForm.controls.FirstName.touched"
+                        class="form-text text-muted">First Name is mandatory</small>
+                    <small *ngIf="studentAddForm.get('FirstName').errors?.minlength"
+                        class="form-text text-muted">Minimum 3 characters required</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="LastName">Last Name</label>
+                    <input type="text" class="form-control" formControlName="LastName" id="LastName"
+                        aria-describedby="helpId" placeholder="Last Name">
+                    <small
+                        *ngIf="studentAddForm.get('LastName').errors?.required && studentAddForm.get('LastName').touched"
+                        class="form-text text-muted">Last
+                        Name is mandatory</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check form-check-inline">
+                    <label for="">Notification Type</label>
+                    <!-- <label class="form-check-label">
+                        <input class="form-check-input" (click)="SetNotification('email')" type="radio"
+                            formControlName="NotificationType" value="email">
+                        Email Id
+                        <input class="form-check-input" (click)="SetNotification('mobile')" type="radio"
+                            formControlName="NotificationType" value="mobile">
+                        Mobile No
+                    </label> -->
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" formControlName="NotificationType" value="email">
+                        Email Id
+                        <input class="form-check-input" type="radio" formControlName="NotificationType" value="mobile">
+                        Mobile No
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput formControlName="DOB" [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field> -->
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="EmailId">Email Id</label>
+                    <input type="email" class="form-control" formControlName="EmailId" id="EmailId"
+                        aria-describedby="emailHelpId" placeholder="Email Id">
+                    <small
+                        *ngIf="studentAddForm.get('EmailId').errors?.required && studentAddForm.get('EmailId').touched"
+                        class="form-text text-muted">Email Id
+                        is mandatory</small>
+                    <small *ngIf="studentAddForm.get('EmailId').errors?.email" class="form-text text-muted">Invalid
+                        Email Id</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="MobileNo">Mobile No</label>
+                    <input type="text" class="form-control" id="MobileNo" formControlName="MobileNo"
+                        aria-describedby="helpId" placeholder="Mobile No">
+                    <small
+                        *ngIf="studentAddForm.get('MobileNo').errors?.required && studentAddForm.get('MobileNo').touched"
+                        class="form-text text-muted">Mobile No
+                        is mandatory</small>
+                    <small *ngIf="studentAddForm.get('MobileNo').errors?.pattern" class="form-text text-muted">Invalid
+                        Mobile No</small>
+                </div>
+            </div>
+        </div>
+        <div class="card border-primary" formGroupName="Address">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AddLine1">Add Line 1</label>
+                        <input type="text" class="form-control" formControlName="AddLine1" id="AddLine1"
+                            aria-describedby="helpId" placeholder="Add Line 1">
+                        <small *ngIf="studentAddForm.get('Address.AddLine1').errors?.required && 
+                            studentAddForm.get('Address.AddLine1').touched" class="form-text text-muted">Add Line 1
+                            is mandatory</small>
+                        <!-- <small
+                            *ngIf="studentAddForm.controls.Address.controls.AddLine1.errors?.required && studentAddForm.controls.Address.controls.AddLine1.touched"
+                            class="form-text text-muted">Address Line 1 is mandatory</small> -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AddLine2">Add Line 2</label>
+                        <input type="text" class="form-control" formControlName="AddLine2" id="AddLine2"
+                            aria-describedby="helpId" placeholder="Add Line 2">
+                        <small id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AddLine3">Add Line 3</label>
+                        <input type="text" class="form-control" formControlName="AddLine3" id="AddLine3"
+                            aria-describedby="helpId" placeholder="Add Line 3">
+                        <small id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="City">City</label>
+                        <select class="form-control" formControlName="City" id="City">
+                            <option>Bhubaneswar</option>
+                            <option>Pune</option>
+                            <option>Mumbai</option>
+                            <option>Chennai</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="State">State</label>
+                        <select class="form-control" formControlName="State" id="State">
+                            <option>Odisha</option>
+                            <option>Maharashtra</option>
+                            <option>Tamil Nadu</option>
+                            <option>Karnataka</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

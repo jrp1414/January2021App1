@@ -45,16 +45,6 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="Age">Age</label>
-                    <input type="number" class="form-control" formControlName="Age" aria-describedby="helpId">
-                    <small *ngIf="studentEditForm.get('Age').errors?.min && studentEditForm.get('Age').touched"
-                        class="form-text text-muted">Age should be minimum 10</small>
-                    <small *ngIf="studentEditForm.get('Age').errors?.max" class="form-text text-muted">Age should be
-                        maximum 25</small>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
                     <label for="EmailId">Email Id</label>
                     <input type="email" class="form-control" formControlName="EmailId" id="EmailId"
                         aria-describedby="emailHelpId" placeholder="Email Id">
