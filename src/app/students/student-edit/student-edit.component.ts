@@ -46,12 +46,16 @@ export class StudentEditComponent implements OnInit {
         State: "",
       })
     });
-    this.route.params.subscribe((parms) => {
-      this.ss.getStudent(parms.id).subscribe((resp) => {
-        this.student = resp;
-        this.studentEditForm.patchValue(this.student);
-      });
+    // this.route.params.subscribe((parms) => {
+    //   this.ss.getStudent(parms.id).subscribe((resp) => {
+    //     this.student = resp;
+    //     this.studentEditForm.patchValue(this.student);
+    //   });
 
+    // });
+    this.route.data.subscribe((data) => {
+      this.student = data.student;
+      this.studentEditForm.patchValue(this.student);
     });
 
     this.studentEditForm.get("NotificationType").valueChanges.subscribe((value) => {

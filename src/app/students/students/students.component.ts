@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Student } from '../services/student.data';
 import { StudentService } from '../services/student.service';
@@ -10,10 +11,13 @@ import { StudentService } from '../services/student.service';
 })
 export class StudentsComponent implements OnInit {
   students: Student[] = [];
-  constructor(private ss: StudentService, private messageService: MessageService) { }
+  constructor(private ss: StudentService, private messageService: MessageService,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.refreshStudents();
+    this.route.data.subscribe((data)=>{
+      this.students = data.students;
+    });
     this.ss.notify.subscribe((flag) => {
       this.refreshStudents();
     });

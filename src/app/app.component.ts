@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { LoggerService } from './services/logger.service';
 import { ProductService } from './services/product.service';
@@ -32,8 +33,24 @@ import { ProductService } from './services/product.service';
   ]
 })
 export class AppComponent implements OnInit {
-  constructor(private messageService:MessageService,private primengConfig: PrimeNGConfig) {
-    
+  loading: boolean = false;
+  constructor(private messageService: MessageService,
+    private primengConfig: PrimeNGConfig, private router: Router) {
+    this.router.events.subscribe((ev: RouterEvent) => {
+      switch (true) {
+        case ev instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+        case ev instanceof NavigationEnd:
+        case ev instanceof NavigationError:
+        case ev instanceof NavigationCancel: {
+          this.loading = false;
+        }
+        default:
+          break;
+      }
+    });
   }
   ngOnInit(): void {
     this.primengConfig.ripple = true;

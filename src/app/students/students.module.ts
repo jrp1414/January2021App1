@@ -12,14 +12,16 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material/material.module';
 import { PrimengModule } from '../shared/primeng/primeng.module';
 import { MessageService } from 'primeng/api';
+import { StudentsResolver } from './services/students-resolver.service';
+import { StudentDetailsResolver } from './services/student-details.resolver';
 
 const routes: Routes = [
   {
-    path: "students", component: StudentsComponent,
+    path: "students", component: StudentsComponent, resolve:{students:StudentsResolver},
     children:[
       {path:"add",component:StudentAddComponent},
-      {path:":id",component:StudentDetailsComponent},
-      {path:":id/edit",component:StudentEditComponent}
+      {path:":id",component:StudentDetailsComponent, resolve:{student:StudentDetailsResolver}},
+      {path:":id/edit",component:StudentEditComponent, resolve:{student:StudentDetailsResolver}}
     ]
   }
 ];

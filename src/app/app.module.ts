@@ -31,12 +31,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { PrimengModule } from './shared/primeng/primeng.module';
 import { MessageService } from 'primeng/api';
+import { MatTableComponent } from './mat-table/mat-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
   { path: "productdetails/:id", component: ProductDetailsComponent, canActivate: [ProductGuard] },
   { path: "signup", component: SignupComponent },
+  { path: "mattable", component: MatTableComponent },
   { path: "", component: HomeComponent },
   // { path: "**", redirectTo: "home" }
 ];
@@ -56,6 +61,7 @@ const routes: Routes = [
     FooterComponent,
     ProductDetailsComponent,
     SignupComponent,
+    MatTableComponent,
     //Components.
     //Directives
     //Pipes
@@ -68,7 +74,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MaterialModule,
-    PrimengModule
+    PrimengModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     //Service,
