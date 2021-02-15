@@ -35,6 +35,8 @@ import { MatTableComponent } from './mat-table/mat-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JanBatchInterceptor } from './students/services/JanBatch.interceptor';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -82,7 +84,8 @@ const routes: Routes = [
   providers: [
     //Service,
     LoggerService,
-    MessageService
+    MessageService,
+    { provide: HTTP_INTERCEPTORS, useClass: JanBatchInterceptor, multi: true }
     // ProductService
   ],
   bootstrap: [AppComponent]

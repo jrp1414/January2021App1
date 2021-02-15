@@ -13,6 +13,9 @@ export class HeaderComponent implements OnInit {
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("token")) {
+      this.auth.isAuthenticated = true;
+    }
   }
 
   OnSignIn(signin) {

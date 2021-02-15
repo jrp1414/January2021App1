@@ -18,23 +18,23 @@ export class StudentService {
     }
 
     getStudents(): Observable<any> {
-        return this.http.get(this.baseUrl + "GetStudents", this.setOptions());
+        return this.http.get(this.baseUrl + "GetStudents");
     }
 
     getStudent(id: number): Observable<any> {
-        return this.http.get(this.baseUrl + "GetStudent/" + id, this.setOptions());
+        return this.http.get(this.baseUrl + "GetStudent/" + id);
     }
 
     addStudent(student: Student): Observable<any> {
-        return this.http.post(this.baseUrl + "AddStudent", student, this.setOptions());
+        return this.http.post(this.baseUrl + "AddStudent", student);
     }
 
     updateStudent(student: Student): Observable<any> {
-        return this.http.put(this.baseUrl + "UpdateStudent", student, this.setOptions());
+        return this.http.put(this.baseUrl + "UpdateStudent", student);
     }
 
     deleteStudent(id: number) {
-        return this.http.delete(this.baseUrl + "DeleteStudent/" + id, this.setOptions());
+        return this.http.delete(this.baseUrl + "DeleteStudent/" + id);
     }
 
 }
