@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { LoggerService } from '../services/logger.service';
 import { Description, Product } from '../services/product.data';
 import { ProductService } from '../services/product.service';
@@ -7,6 +7,7 @@ import { ProductService } from '../services/product.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ["./products.component.css"],
+  // encapsulation:ViewEncapsulation.None,
   providers: [
     // LoggerService,
     // ProductService

@@ -65,13 +65,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="MobileNo">Mobile No</label>
-                    <input type="text" class="form-control" pattern="[0-9 ]{10}" ngModel name="MobileNo"
-                        #MobileNo="ngModel" id="MobileNo" aria-describedby="helpId" placeholder="MobileNo">
-                    <small id="helpId" class="form-text text-muted">Mobile No</small>
-                    <!-- <span>{{MobileNo.errors | json}}</span> -->
-                </div>
+                
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -87,64 +81,13 @@
                         placeholder="Confirm Password">
                 </div>
             </div>
-
-        </div>
-        <div class="row" ngModelGroup="Details">
-            <div class="col-md-6">
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" ngModel type="checkbox" name="TermsAndConditions"> Terms and
-                        Conditions
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">Gender : </label>
-                    <label class="form-check-label">
-                        <input class="form-check-input" ngModel type="radio" name="Gender" value="male"> Male
-                        <input class="form-check-input" ngModel type="radio" name="Gender" value="female"> Female
-                    </label>
-                </div>
-            </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="Address">Address</label>
-                    <textarea class="form-control" ngModel name="Address" rows="3"></textarea>
+                    <label for="">Address</label>
+                    <textarea class="form-control" name="Address" id="Address" ngModel rows="3"></textarea>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="City">City</label>
-                    <select class="form-control" ngModel name="City" id="City">
-                        <option>Pune</option>
-                        <option>Chennai</option>
-                        <option>Bengaluru</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Skills">Skills</label>
-                    <select multiple class="form-control" ngModel name="Skills">
-                        <option>C#</option>
-                        <option>Angular</option>
-                        <option>Javascript</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Age">Age</label>
-                    <input type="number" class="form-control" [maxmin]="{max:25,min:10}" name="Age" id="Age"
-                        #Age="ngModel" ngModel aria-describedby="helpId" placeholder="">
-                    <small id="helpId" *ngIf="Age.errors?.max" class="form-text text-muted">Max age 25</small>
-                    <small id="helpId" *ngIf="Age.errors?.min" class="form-text text-muted">Min age 10</small>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <button [disabled]="signupform.invalid" type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

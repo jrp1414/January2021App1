@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from './student.data';
@@ -9,25 +9,32 @@ export class StudentService {
     private baseUrl: string = "http://localhost:44319/";
     public notify: EventEmitter<boolean> = new EventEmitter();
 
+    setOptions() {
+        return {
+            headers: new HttpHeaders({
+                "authorization": "Bearer " + localStorage.getItem("token")
+            })
+        };
+    }
 
     getStudents(): Observable<any> {
-        return this.http.get(this.baseUrl + "GetStudents");
+        return this.http.get(this.baseUrl + "GetStudents", this.setOptions());
     }
 
     getStudent(id: number): Observable<any> {
-        return this.http.get(this.baseUrl + "GetStudent/" + id);
+        return this.http.get(this.baseUrl + "GetStudent/" + id, this.setOptions());
     }
 
     addStudent(student: Student): Observable<any> {
-        return this.http.post(this.baseUrl + "AddStudent", student);
+        return this.http.post(this.baseUrl + "AddStudent", student, this.setOptions());
     }
 
     updateStudent(student: Student): Observable<any> {
-        return this.http.put(this.baseUrl + "UpdateStudent", student);
+        return this.http.put(this.baseUrl + "UpdateStudent", student, this.setOptions());
     }
 
     deleteStudent(id: number) {
-        return this.http.delete(this.baseUrl + "DeleteStudent/" + id);
+        return this.http.delete(this.baseUrl + "DeleteStudent/" + id, this.setOptions());
     }
 
 }
