@@ -37,6 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JanBatchInterceptor } from './students/services/JanBatch.interceptor';
+import { StoreModule } from '@ngrx/store';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -79,7 +80,8 @@ const routes: Routes = [
     PrimengModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     //Service,
