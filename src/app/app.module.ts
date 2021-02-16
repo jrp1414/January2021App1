@@ -38,6 +38,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JanBatchInterceptor } from './students/services/JanBatch.interceptor';
 import { StoreModule } from '@ngrx/store';
+import { studentReducer } from './store/student.reducer';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -81,7 +82,7 @@ const routes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({studentR:studentReducer})
   ],
   providers: [
     //Service,
