@@ -14,10 +14,11 @@ import { PrimengModule } from '../shared/primeng/primeng.module';
 import { MessageService } from 'primeng/api';
 import { StudentsResolver } from './services/students-resolver.service';
 import { StudentDetailsResolver } from './services/student-details.resolver';
+import { CoreModule } from '../shared/core/core.module';
 
 const routes: Routes = [
   {
-    path: "students", component: StudentsComponent, resolve:{students:StudentsResolver},
+    path: "", component: StudentsComponent, resolve:{students:StudentsResolver},
     children:[
       {path:"add",component:StudentAddComponent},
       {path:":id",component:StudentDetailsComponent, resolve:{student:StudentDetailsResolver}},
@@ -35,12 +36,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule.forChild(routes),
-    MaterialModule,
-    PrimengModule
+    CoreModule,
+    RouterModule.forChild(routes)
   ],
   providers:[]
 })
